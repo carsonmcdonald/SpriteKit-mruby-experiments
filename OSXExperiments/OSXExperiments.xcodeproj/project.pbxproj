@@ -10,12 +10,11 @@
 		B667D6AF18EF5DE80062E25A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B667D6AE18EF5DE80062E25A /* Cocoa.framework */; };
 		B667D6B918EF5DE80062E25A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B667D6B718EF5DE80062E25A /* InfoPlist.strings */; };
 		B667D6BB18EF5DE80062E25A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B667D6BA18EF5DE80062E25A /* main.m */; };
-		B667D6BF18EF5DE80062E25A /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B667D6BD18EF5DE80062E25A /* Credits.rtf */; };
 		B667D6C218EF5DE80062E25A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B667D6C118EF5DE80062E25A /* AppDelegate.m */; };
 		B667D6C518EF5DE80062E25A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B667D6C318EF5DE80062E25A /* MainMenu.xib */; };
 		B667D6C718EF5DE80062E25A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B667D6C618EF5DE80062E25A /* Images.xcassets */; };
-		B667D6CE18EF5DE80062E25A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B667D6CD18EF5DE80062E25A /* XCTest.framework */; };
 		B667D6CF18EF5DE80062E25A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B667D6AE18EF5DE80062E25A /* Cocoa.framework */; };
+		B69AF84018EF603B00DAE0B8 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69AF83F18EF603B00DAE0B8 /* SpriteKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,13 +37,12 @@
 		B667D6B818EF5DE80062E25A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B667D6BA18EF5DE80062E25A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B667D6BC18EF5DE80062E25A /* OSXExperiments-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OSXExperiments-Prefix.pch"; sourceTree = "<group>"; };
-		B667D6BE18EF5DE80062E25A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		B667D6C018EF5DE80062E25A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B667D6C118EF5DE80062E25A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B667D6C418EF5DE80062E25A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B667D6C618EF5DE80062E25A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B667D6CC18EF5DE80062E25A /* OSXExperimentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OSXExperimentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B667D6CD18EF5DE80062E25A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		B69AF83F18EF603B00DAE0B8 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B69AF84018EF603B00DAE0B8 /* SpriteKit.framework in Frameworks */,
 				B667D6AF18EF5DE80062E25A /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,7 +60,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B667D6CF18EF5DE80062E25A /* Cocoa.framework in Frameworks */,
-				B667D6CE18EF5DE80062E25A /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,8 +87,8 @@
 		B667D6AD18EF5DE80062E25A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B69AF83F18EF603B00DAE0B8 /* SpriteKit.framework */,
 				B667D6AE18EF5DE80062E25A /* Cocoa.framework */,
-				B667D6CD18EF5DE80062E25A /* XCTest.framework */,
 				B667D6B018EF5DE80062E25A /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -125,7 +123,6 @@
 				B667D6B718EF5DE80062E25A /* InfoPlist.strings */,
 				B667D6BA18EF5DE80062E25A /* main.m */,
 				B667D6BC18EF5DE80062E25A /* OSXExperiments-Prefix.pch */,
-				B667D6BD18EF5DE80062E25A /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -208,7 +205,6 @@
 			files = (
 				B667D6B918EF5DE80062E25A /* InfoPlist.strings in Resources */,
 				B667D6C718EF5DE80062E25A /* Images.xcassets in Resources */,
-				B667D6BF18EF5DE80062E25A /* Credits.rtf in Resources */,
 				B667D6C518EF5DE80062E25A /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,14 +252,6 @@
 				B667D6B818EF5DE80062E25A /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		B667D6BD18EF5DE80062E25A /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B667D6BE18EF5DE80062E25A /* en */,
-			);
-			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
 		B667D6C318EF5DE80062E25A /* MainMenu.xib */ = {

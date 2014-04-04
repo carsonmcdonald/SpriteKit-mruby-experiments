@@ -1,11 +1,3 @@
-//
-//  main.m
-//  OSXExperiments
-//
-//  Created by Carson on 4/4/14.
-//  Copyright (c) 2014 Carson McDonald. All rights reserved.
-//
-
 #import <Cocoa/Cocoa.h>
 
 int main(int argc, const char * argv[])
