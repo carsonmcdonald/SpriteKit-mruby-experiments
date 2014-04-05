@@ -13,19 +13,10 @@
 		B667D6C218EF5DE80062E25A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B667D6C118EF5DE80062E25A /* AppDelegate.m */; };
 		B667D6C518EF5DE80062E25A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B667D6C318EF5DE80062E25A /* MainMenu.xib */; };
 		B667D6C718EF5DE80062E25A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B667D6C618EF5DE80062E25A /* Images.xcassets */; };
-		B667D6CF18EF5DE80062E25A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B667D6AE18EF5DE80062E25A /* Cocoa.framework */; };
 		B69AF84018EF603B00DAE0B8 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69AF83F18EF603B00DAE0B8 /* SpriteKit.framework */; };
+		B69AF84218EF616300DAE0B8 /* MRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69AF84118EF616300DAE0B8 /* MRuby.framework */; };
+		B69AF84618F03BCB00DAE0B8 /* test.rb in Resources */ = {isa = PBXBuildFile; fileRef = B69AF84418F03BCB00DAE0B8 /* test.rb */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		B667D6D018EF5DE80062E25A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B667D6A318EF5DE80062E25A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B667D6AA18EF5DE80062E25A;
-			remoteInfo = OSXExperiments;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		B667D6AB18EF5DE80062E25A /* OSXExperiments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSXExperiments.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,8 +32,9 @@
 		B667D6C118EF5DE80062E25A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B667D6C418EF5DE80062E25A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B667D6C618EF5DE80062E25A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B667D6CC18EF5DE80062E25A /* OSXExperimentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OSXExperimentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B69AF83F18EF603B00DAE0B8 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		B69AF84118EF616300DAE0B8 /* MRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MRuby.framework; sourceTree = "<group>"; };
+		B69AF84418F03BCB00DAE0B8 /* test.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = test.rb; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,16 +42,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B69AF84218EF616300DAE0B8 /* MRuby.framework in Frameworks */,
 				B69AF84018EF603B00DAE0B8 /* SpriteKit.framework in Frameworks */,
 				B667D6AF18EF5DE80062E25A /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B667D6C918EF5DE80062E25A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B667D6CF18EF5DE80062E25A /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +64,6 @@
 			isa = PBXGroup;
 			children = (
 				B667D6AB18EF5DE80062E25A /* OSXExperiments.app */,
-				B667D6CC18EF5DE80062E25A /* OSXExperimentsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,6 +71,7 @@
 		B667D6AD18EF5DE80062E25A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B69AF84118EF616300DAE0B8 /* MRuby.framework */,
 				B69AF83F18EF603B00DAE0B8 /* SpriteKit.framework */,
 				B667D6AE18EF5DE80062E25A /* Cocoa.framework */,
 				B667D6B018EF5DE80062E25A /* Other Frameworks */,
@@ -107,6 +92,7 @@
 		B667D6B418EF5DE80062E25A /* OSXExperiments */ = {
 			isa = PBXGroup;
 			children = (
+				B69AF84418F03BCB00DAE0B8 /* test.rb */,
 				B667D6C018EF5DE80062E25A /* AppDelegate.h */,
 				B667D6C118EF5DE80062E25A /* AppDelegate.m */,
 				B667D6C318EF5DE80062E25A /* MainMenu.xib */,
@@ -147,24 +133,6 @@
 			productReference = B667D6AB18EF5DE80062E25A /* OSXExperiments.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B667D6CB18EF5DE80062E25A /* OSXExperimentsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B667D6DF18EF5DE80062E25A /* Build configuration list for PBXNativeTarget "OSXExperimentsTests" */;
-			buildPhases = (
-				B667D6C818EF5DE80062E25A /* Sources */,
-				B667D6C918EF5DE80062E25A /* Frameworks */,
-				B667D6CA18EF5DE80062E25A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B667D6D118EF5DE80062E25A /* PBXTargetDependency */,
-			);
-			name = OSXExperimentsTests;
-			productName = OSXExperimentsTests;
-			productReference = B667D6CC18EF5DE80062E25A /* OSXExperimentsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -173,11 +141,6 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Carson McDonald";
-				TargetAttributes = {
-					B667D6CB18EF5DE80062E25A = {
-						TestTargetID = B667D6AA18EF5DE80062E25A;
-					};
-				};
 			};
 			buildConfigurationList = B667D6A618EF5DE80062E25A /* Build configuration list for PBXProject "OSXExperiments" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -193,7 +156,6 @@
 			projectRoot = "";
 			targets = (
 				B667D6AA18EF5DE80062E25A /* OSXExperiments */,
-				B667D6CB18EF5DE80062E25A /* OSXExperimentsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -204,15 +166,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B667D6B918EF5DE80062E25A /* InfoPlist.strings in Resources */,
+				B69AF84618F03BCB00DAE0B8 /* test.rb in Resources */,
 				B667D6C718EF5DE80062E25A /* Images.xcassets in Resources */,
 				B667D6C518EF5DE80062E25A /* MainMenu.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B667D6CA18EF5DE80062E25A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,22 +184,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B667D6C818EF5DE80062E25A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B667D6D118EF5DE80062E25A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B667D6AA18EF5DE80062E25A /* OSXExperiments */;
-			targetProxy = B667D6D018EF5DE80062E25A /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B667D6B718EF5DE80062E25A /* InfoPlist.strings */ = {
@@ -340,6 +281,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OSXExperiments/OSXExperiments-Prefix.pch";
 				INFOPLIST_FILE = "OSXExperiments/OSXExperiments-Info.plist";
@@ -353,51 +298,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OSXExperiments/OSXExperiments-Prefix.pch";
 				INFOPLIST_FILE = "OSXExperiments/OSXExperiments-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		B667D6E018EF5DE80062E25A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/OSXExperiments.app/Contents/MacOS/OSXExperiments";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "OSXExperiments/OSXExperiments-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "OSXExperimentsTests/OSXExperimentsTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		B667D6E118EF5DE80062E25A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/OSXExperiments.app/Contents/MacOS/OSXExperiments";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "OSXExperiments/OSXExperiments-Prefix.pch";
-				INFOPLIST_FILE = "OSXExperimentsTests/OSXExperimentsTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -418,15 +327,6 @@
 			buildConfigurations = (
 				B667D6DD18EF5DE80062E25A /* Debug */,
 				B667D6DE18EF5DE80062E25A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B667D6DF18EF5DE80062E25A /* Build configuration list for PBXNativeTarget "OSXExperimentsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B667D6E018EF5DE80062E25A /* Debug */,
-				B667D6E118EF5DE80062E25A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
