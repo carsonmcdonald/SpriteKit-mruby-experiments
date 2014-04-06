@@ -8,6 +8,7 @@
 @interface SKMRCore(Private)
 
 - (void)loadScriptFromBundle:(NSString *)scriptFile;
+- (void)registerModule;
 
 @end
 
@@ -33,6 +34,8 @@ static DebugBlock debugBlock;
         };
         
         mrb = mrb_open();
+
+        [self registerModule];
     }
     
     return self;
@@ -46,6 +49,25 @@ static DebugBlock debugBlock;
 }
 
 #pragma mark - Private
+
+static void skmr_core_free(mrb_state *mrb, void *obj)
+{
+    NSLog(@"SKMRCore free called");
+    
+    SKMRCore *skmrCore = (__bridge SKMRCore *)obj;
+    CFBridgingRelease((__bridge CFTypeRef)(skmrCore));
+}
+
+static const struct mrb_data_type skmr_core_type = {
+    "skmrCoreData", skmr_core_free,
+};
+
+- (void)registerModule
+{
+    struct RClass *module = mrb_define_module(mrb, "SKMRCore");
+    
+    mrb_mod_cv_set(mrb, module, mrb_intern_cstr(mrb, "skmrCoreData"), mrb_obj_value(Data_Wrap_Struct(mrb, mrb->object_class, &skmr_core_type, (void*) CFBridgingRetain(self))));
+}
 
 - (void)loadScriptFromBundle:(NSString *)scriptFile
 {
