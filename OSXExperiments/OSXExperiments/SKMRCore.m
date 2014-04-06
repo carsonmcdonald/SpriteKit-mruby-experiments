@@ -62,9 +62,29 @@ static const struct mrb_data_type skmr_core_type = {
     "skmrCoreData", skmr_core_free,
 };
 
+static mrb_value set_show_debug(mrb_state* mrb, mrb_value obj)
+{
+    mrb_bool setting = YES;
+    mrb_get_args(mrb, "b", &setting);
+    
+    SKMRCore *slf = (__bridge SKMRCore *)(mrb_data_get_ptr(mrb, mrb_cv_get(mrb, obj, mrb_intern_cstr(mrb, "skmrCoreData")), &skmr_core_type));
+    if (!slf)
+    {
+        mrb_raise(mrb, E_ARGUMENT_ERROR, "Internal state corrupted");
+    }
+    
+    slf.skView.showsFPS = setting;
+    slf.skView.showsDrawCount = setting;
+    slf.skView.showsNodeCount = setting;
+    
+    return mrb_nil_value();
+}
+
 - (void)registerModule
 {
     struct RClass *module = mrb_define_module(mrb, "SKMRCore");
+    
+    mrb_define_class_method(mrb, module, "show_debug=", set_show_debug, MRB_ARGS_REQ(1));
     
     mrb_mod_cv_set(mrb, module, mrb_intern_cstr(mrb, "skmrCoreData"), mrb_obj_value(Data_Wrap_Struct(mrb, mrb->object_class, &skmr_core_type, (void*) CFBridgingRetain(self))));
 }
