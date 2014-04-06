@@ -49,6 +49,11 @@ static DebugBlock debugBlock;
     mrb_run(mrb, mrb_proc_ptr(script), mrb_top_self(mrb));
 }
 
+- (struct RClass *)registerModuleUnderRoot:(const char *)name
+{
+    return mrb_define_module_under(mrb, skmrModule, name);
+}
+
 #pragma mark - Private
 
 static void skmr_core_free(mrb_state *mrb, void *obj)

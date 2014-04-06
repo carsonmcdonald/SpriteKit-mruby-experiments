@@ -8,5 +8,6 @@
 - (instancetype)initWithFrame:(NSRect)frame;
 
 - (void)startExecution:(NSString *)scriptFile;
+- (struct RClass *)registerModuleUnderRoot:(const char *)name;
 
 @end
