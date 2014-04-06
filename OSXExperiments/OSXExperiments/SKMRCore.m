@@ -8,7 +8,7 @@
 @interface SKMRCore(Private)
 
 - (void)loadScriptFromBundle:(NSString *)scriptFile;
-- (void)registerModule;
+- (void)registerRootModule;
 
 @end
 
@@ -16,6 +16,7 @@
 {
     mrb_state *mrb;
     mrb_value script;
+    struct RClass *skmrModule;
 }
 
 typedef void (^ DebugBlock)(NSString *);
@@ -35,7 +36,7 @@ static DebugBlock debugBlock;
         
         mrb = mrb_open();
 
-        [self registerModule];
+        [self registerRootModule];
     }
     
     return self;
@@ -80,13 +81,13 @@ static mrb_value set_show_debug(mrb_state* mrb, mrb_value obj)
     return mrb_nil_value();
 }
 
-- (void)registerModule
+- (void)registerRootModule
 {
-    struct RClass *module = mrb_define_module(mrb, "SKMRCore");
+    skmrModule = mrb_define_module(mrb, "SKMR");
     
-    mrb_define_class_method(mrb, module, "show_debug=", set_show_debug, MRB_ARGS_REQ(1));
+    mrb_define_class_method(mrb, skmrModule, "show_debug=", set_show_debug, MRB_ARGS_REQ(1));
     
-    mrb_mod_cv_set(mrb, module, mrb_intern_lit(mrb, "skmrCoreData"), mrb_obj_value(Data_Wrap_Struct(mrb, mrb->object_class, &skmr_core_type, (void*) CFBridgingRetain(self))));
+    mrb_mod_cv_set(mrb, skmrModule, mrb_intern_lit(mrb, "skmrCoreData"), mrb_obj_value(Data_Wrap_Struct(mrb, mrb->object_class, &skmr_core_type, (void*) CFBridgingRetain(self))));
 }
 
 - (void)loadScriptFromBundle:(NSString *)scriptFile

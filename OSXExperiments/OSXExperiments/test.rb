@@ -1,1 +1,1 @@
-SKMRCore::show_debug = true
+SKMR::show_debug = true
