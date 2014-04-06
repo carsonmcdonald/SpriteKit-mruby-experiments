@@ -13,6 +13,7 @@
 		B667D6C218EF5DE80062E25A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B667D6C118EF5DE80062E25A /* AppDelegate.m */; };
 		B667D6C518EF5DE80062E25A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B667D6C318EF5DE80062E25A /* MainMenu.xib */; };
 		B667D6C718EF5DE80062E25A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B667D6C618EF5DE80062E25A /* Images.xcassets */; };
+		B6915DB818F09FE600CB3EED /* SKMRCore.m in Sources */ = {isa = PBXBuildFile; fileRef = B6915DB718F09FE600CB3EED /* SKMRCore.m */; };
 		B69AF84018EF603B00DAE0B8 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69AF83F18EF603B00DAE0B8 /* SpriteKit.framework */; };
 		B69AF84218EF616300DAE0B8 /* MRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69AF84118EF616300DAE0B8 /* MRuby.framework */; };
 		B69AF84618F03BCB00DAE0B8 /* test.rb in Resources */ = {isa = PBXBuildFile; fileRef = B69AF84418F03BCB00DAE0B8 /* test.rb */; };
@@ -32,6 +33,8 @@
 		B667D6C118EF5DE80062E25A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B667D6C418EF5DE80062E25A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B667D6C618EF5DE80062E25A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B6915DB618F09FE600CB3EED /* SKMRCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKMRCore.h; sourceTree = "<group>"; };
+		B6915DB718F09FE600CB3EED /* SKMRCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKMRCore.m; sourceTree = "<group>"; };
 		B69AF83F18EF603B00DAE0B8 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		B69AF84118EF616300DAE0B8 /* MRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MRuby.framework; sourceTree = "<group>"; };
 		B69AF84418F03BCB00DAE0B8 /* test.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = test.rb; sourceTree = "<group>"; };
@@ -93,6 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				B69AF84418F03BCB00DAE0B8 /* test.rb */,
+				B6915DB618F09FE600CB3EED /* SKMRCore.h */,
+				B6915DB718F09FE600CB3EED /* SKMRCore.m */,
 				B667D6C018EF5DE80062E25A /* AppDelegate.h */,
 				B667D6C118EF5DE80062E25A /* AppDelegate.m */,
 				B667D6C318EF5DE80062E25A /* MainMenu.xib */,
@@ -181,6 +186,7 @@
 			files = (
 				B667D6C218EF5DE80062E25A /* AppDelegate.m in Sources */,
 				B667D6BB18EF5DE80062E25A /* main.m in Sources */,
+				B6915DB818F09FE600CB3EED /* SKMRCore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
