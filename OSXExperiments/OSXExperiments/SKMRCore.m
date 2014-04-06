@@ -1,5 +1,7 @@
 #import "SKMRCore.h"
 
+#import "SKMRScene.h"
+
 #import <MRuby/MRuby.h>
 #import <MRuby/mruby/variable.h>
 #import <MRuby/mruby/data.h>
@@ -37,6 +39,8 @@ static DebugBlock debugBlock;
         mrb = mrb_open();
 
         [self registerRootModule];
+        
+        [SKMRScene registerModule:mrb withRootModule:skmrModule];
     }
     
     return self;
