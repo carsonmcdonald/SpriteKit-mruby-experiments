@@ -1,6 +1,6 @@
 #import "SKMRCore.h"
-
 #import "SKMRScene.h"
+#import "SKMRLabel.h"
 
 #import <MRuby/MRuby.h>
 #import <MRuby/mruby/variable.h>
@@ -40,6 +40,7 @@ static DebugBlock debugBlock;
         struct RClass *skmrModule = [self registerRootModule];
         
         [SKMRScene registerModule:mrb withRootModule:skmrModule];
+        [SKMRLabel registerModule:mrb withRootModule:skmrModule];
     }
     
     return self;
@@ -56,8 +57,6 @@ static DebugBlock debugBlock;
 
 static void skmr_core_free(mrb_state *mrb, void *obj)
 {
-    NSLog(@"SKMRCore free called");
-    
     SKMRCore *skmrCore = (__bridge SKMRCore *)obj;
     CFBridgingRelease((__bridge CFTypeRef)(skmrCore));
 }
@@ -84,11 +83,34 @@ static mrb_value set_show_debug(mrb_state* mrb, mrb_value obj)
     return mrb_nil_value();
 }
 
+static mrb_value set_current_scene(mrb_state* mrb, mrb_value obj)
+{
+    mrb_value scene = mrb_nil_value();
+    mrb_get_args(mrb, "o", &scene);
+    
+    SKMRCore *slf = (__bridge SKMRCore *)(mrb_data_get_ptr(mrb, mrb_cv_get(mrb, obj, mrb_intern_lit(mrb, "skmrCoreData")), &skmr_core_type));
+    if (!slf)
+    {
+        mrb_raise(mrb, E_ARGUMENT_ERROR, "Internal state corrupted");
+    }
+    
+    SKMRScene *skmrScene = [SKMRScene fetchStoredScene:mrb fromObject:scene];
+    if (!skmrScene)
+    {
+        mrb_raise(mrb, E_ARGUMENT_ERROR, "Internal state corrupted");
+    }
+    
+    [slf.skView presentScene:skmrScene];
+    
+    return mrb_nil_value();
+}
+
 - (struct RClass *)registerRootModule
 {
     struct RClass *skmrModule = mrb_define_module(mrb, "SKMR");
     
     mrb_define_module_function(mrb, skmrModule, "show_debug=", set_show_debug, MRB_ARGS_REQ(1));
+    mrb_define_module_function(mrb, skmrModule, "current_scene=", set_current_scene, MRB_ARGS_REQ(1));
     
     mrb_mod_cv_set(mrb, skmrModule, mrb_intern_lit(mrb, "skmrCoreData"), mrb_obj_value(Data_Wrap_Struct(mrb, mrb->object_class, &skmr_core_type, (void*) CFBridgingRetain(self))));
 
