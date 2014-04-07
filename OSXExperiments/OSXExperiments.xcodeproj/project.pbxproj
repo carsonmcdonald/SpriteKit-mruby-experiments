@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B618AE9318F1AB2500A8D114 /* SKMRScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B618AE9218F1AB2500A8D114 /* SKMRScene.m */; };
+		B618AE9618F1BB7500A8D114 /* SKMRLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B618AE9518F1BB7500A8D114 /* SKMRLabel.m */; };
+		B618AE9918F1BFB600A8D114 /* SKMRUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B618AE9818F1BFB600A8D114 /* SKMRUtils.m */; };
 		B667D6AF18EF5DE80062E25A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B667D6AE18EF5DE80062E25A /* Cocoa.framework */; };
 		B667D6B918EF5DE80062E25A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B667D6B718EF5DE80062E25A /* InfoPlist.strings */; };
 		B667D6BB18EF5DE80062E25A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B667D6BA18EF5DE80062E25A /* main.m */; };
@@ -23,6 +25,10 @@
 /* Begin PBXFileReference section */
 		B618AE9118F1AB2500A8D114 /* SKMRScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKMRScene.h; sourceTree = "<group>"; };
 		B618AE9218F1AB2500A8D114 /* SKMRScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKMRScene.m; sourceTree = "<group>"; };
+		B618AE9418F1BB7500A8D114 /* SKMRLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKMRLabel.h; sourceTree = "<group>"; };
+		B618AE9518F1BB7500A8D114 /* SKMRLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKMRLabel.m; sourceTree = "<group>"; };
+		B618AE9718F1BFB600A8D114 /* SKMRUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKMRUtils.h; sourceTree = "<group>"; };
+		B618AE9818F1BFB600A8D114 /* SKMRUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKMRUtils.m; sourceTree = "<group>"; };
 		B667D6AB18EF5DE80062E25A /* OSXExperiments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSXExperiments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B667D6AE18EF5DE80062E25A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		B667D6B118EF5DE80062E25A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -99,10 +105,14 @@
 			isa = PBXGroup;
 			children = (
 				B69AF84418F03BCB00DAE0B8 /* test.rb */,
+				B618AE9718F1BFB600A8D114 /* SKMRUtils.h */,
+				B618AE9818F1BFB600A8D114 /* SKMRUtils.m */,
 				B6915DB618F09FE600CB3EED /* SKMRCore.h */,
 				B6915DB718F09FE600CB3EED /* SKMRCore.m */,
 				B618AE9118F1AB2500A8D114 /* SKMRScene.h */,
 				B618AE9218F1AB2500A8D114 /* SKMRScene.m */,
+				B618AE9418F1BB7500A8D114 /* SKMRLabel.h */,
+				B618AE9518F1BB7500A8D114 /* SKMRLabel.m */,
 				B667D6C018EF5DE80062E25A /* AppDelegate.h */,
 				B667D6C118EF5DE80062E25A /* AppDelegate.m */,
 				B667D6C318EF5DE80062E25A /* MainMenu.xib */,
@@ -189,8 +199,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B618AE9918F1BFB600A8D114 /* SKMRUtils.m in Sources */,
 				B667D6C218EF5DE80062E25A /* AppDelegate.m in Sources */,
 				B618AE9318F1AB2500A8D114 /* SKMRScene.m in Sources */,
+				B618AE9618F1BB7500A8D114 /* SKMRLabel.m in Sources */,
 				B667D6BB18EF5DE80062E25A /* main.m in Sources */,
 				B6915DB818F09FE600CB3EED /* SKMRCore.m in Sources */,
 			);
