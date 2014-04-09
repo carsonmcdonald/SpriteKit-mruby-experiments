@@ -1,5 +1,6 @@
 #import "SKMRScene.h"
 #import "SKMRUtils.h"
+#import "SKMRLabel.h"
 
 #import <MRuby/mruby/variable.h>
 #import <MRuby/mruby/data.h>
@@ -13,6 +14,7 @@
     
     mrb_define_method(mrb, skmrSceneClass, "initialize", skmr_scene_init, MRB_ARGS_REQ(2));
     mrb_define_method(mrb, skmrSceneClass, "background_color=", set_background_color, MRB_ARGS_REQ(1));
+    mrb_define_method(mrb, skmrSceneClass, "<<", add_node, MRB_ARGS_REQ(1));
 }
 
 + (SKMRScene *)fetchStoredScene:(mrb_state *)mrb fromObject:(mrb_value)obj
@@ -61,6 +63,23 @@ static mrb_value set_background_color(mrb_state *mrb, mrb_value obj)
     
     SKMRScene *scene = (__bridge SKMRScene *)(mrb_data_get_ptr(mrb, mrb_cv_get(mrb, obj, mrb_intern_lit(mrb, "skmrSceneData")), &skmr_scene_type));
     scene.backgroundColor = [SKMRUtils convertHexStringToSKColor:[NSString stringWithUTF8String:bgColor]];
+    
+    return obj;
+}
+
+static mrb_value add_node(mrb_state *mrb, mrb_value obj)
+{
+    mrb_value *argv;
+    int len;
+    
+    mrb_get_args(mrb, "*", &argv, &len);
+    
+    SKMRScene *scene = (__bridge SKMRScene *)(mrb_data_get_ptr(mrb, mrb_cv_get(mrb, obj, mrb_intern_lit(mrb, "skmrSceneData")), &skmr_scene_type));
+    
+    while (len--)
+    {
+        [scene addChild:[SKMRLabel fetchStoredLabel:mrb fromObject:*argv++]];
+    }
     
     return obj;
 }
