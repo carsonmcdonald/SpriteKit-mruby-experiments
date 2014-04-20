@@ -1,6 +1,7 @@
 #import "SKMRCore.h"
 #import "SKMRScene.h"
 #import "SKMRLabel.h"
+#import "SKMRSprite.h"
 
 #import <MRuby/MRuby.h>
 #import <MRuby/mruby/variable.h>
@@ -41,6 +42,7 @@ static DebugBlock debugBlock;
         
         [SKMRScene registerModule:mrb withRootModule:skmrModule];
         [SKMRLabel registerModule:mrb withRootModule:skmrModule];
+        [SKMRSprite registerModule:mrb withRootModule:skmrModule];
     }
     
     return self;

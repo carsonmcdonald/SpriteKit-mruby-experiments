@@ -1,6 +1,7 @@
 #import "SKMRScene.h"
 #import "SKMRUtils.h"
 #import "SKMRLabel.h"
+#import "SKMRSprite.h"
 
 #import <MRuby/mruby/variable.h>
 #import <MRuby/mruby/data.h>
@@ -78,7 +79,20 @@ static mrb_value add_node(mrb_state *mrb, mrb_value obj)
     
     while (len--)
     {
-        [scene addChild:[SKMRLabel fetchStoredLabel:mrb fromObject:*argv++]];
+        mrb_value childNode = *argv++;
+        const char *className = mrb_obj_classname(mrb, childNode);
+        if(strcmp(className, "SKMR::Label") == 0)
+        {
+            [scene addChild:[SKMRLabel fetchStoredLabel:mrb fromObject:childNode]];
+        }
+        else if(strcmp(className, "SKMR::Sprite") == 0)
+        {
+            [scene addChild:[SKMRSprite fetchStoredSprite:mrb fromObject:childNode]];
+        }
+        else
+        {
+            mrb_raise(mrb, E_ARGUMENT_ERROR, [[NSString stringWithFormat:@"Unknown child node class: %s", className] UTF8String]);
+        }
     }
     
     return obj;

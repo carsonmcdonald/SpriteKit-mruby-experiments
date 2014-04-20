@@ -14,6 +14,9 @@ begin
     label.position = [view_size[:x]/2, view_size[:y]/2]
     main_scene << label
     
+    sprite = SKMR::Sprite.new "simplesprite.png"
+    main_scene << sprite
+    
     SKMR::current_scene = main_scene
 rescue Exception => e
     puts e
