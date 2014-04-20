@@ -21,20 +21,12 @@
     mrb_value script;
 }
 
-typedef void (^ DebugBlock)(NSString *);
-
-static DebugBlock debugBlock;
-
 - (instancetype)initWithFrame:(NSRect)frame
 {
     if(self = [super init])
     {
         self.skView = [[SKView alloc] initWithFrame:frame];
         self.skView.autoresizingMask = NSViewNotSizable;
-        
-        debugBlock = ^(NSString *message) {
-            NSLog(@"DEBUG: %@", message);
-        };
         
         mrb = mrb_open();
 
@@ -126,7 +118,7 @@ static mrb_value set_current_scene(mrb_state* mrb, mrb_value obj)
     FILE *fp = fopen([bundleLocation UTF8String], "rb");
     if (fp == NULL)
     {
-        debugBlock(@"Error loading test file from bundle.\n");
+        NSLog(@"Error loading test file from bundle.\n");
     }
     else
     {
@@ -137,7 +129,7 @@ static mrb_value set_current_scene(mrb_state* mrb, mrb_value obj)
         
         if (mrb_nil_p(script))
         {
-            debugBlock(@"Error loading test.\n");
+            NSLog(@"Error loading test.\n");
         }
         
         fclose(fp);
