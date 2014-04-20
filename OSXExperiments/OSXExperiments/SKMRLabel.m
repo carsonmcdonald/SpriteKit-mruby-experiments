@@ -34,7 +34,7 @@ static void skmr_label_free(mrb_state *mrb, void *obj)
 }
 
 static const struct mrb_data_type skmr_label_type = {
-    "skmrLabelData", skmr_label_free,
+    "skmrNodeData", skmr_label_free,
 };
 
 static mrb_value skmr_label_init(mrb_state *mrb, mrb_value obj)
