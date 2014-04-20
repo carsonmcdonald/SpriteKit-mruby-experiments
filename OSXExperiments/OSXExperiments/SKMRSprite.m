@@ -12,7 +12,7 @@
     struct RClass* skmrSpriteClass = mrb_define_class_under(mrb, skmrModule, "Sprite", mrb->object_class);
     
     mrb_define_method(mrb, skmrSpriteClass, "initialize", skmr_sprite_init, MRB_ARGS_REQ(1));
-    // todo mrb_define_method(mrb, skmrLabelClass, "position=", set_position, MRB_ARGS_REQ(1));
+    mrb_define_method(mrb, skmrSpriteClass, "position=", set_position, MRB_ARGS_REQ(1));
 }
 
 + (SKMRSprite *)fetchStoredSprite:(mrb_state *)mrb fromObject:(mrb_value)obj
@@ -44,5 +44,18 @@ static mrb_value skmr_sprite_init(mrb_state *mrb, mrb_value obj)
     return obj;
 }
 
+static mrb_value set_position(mrb_state *mrb, mrb_value obj)
+{
+    mrb_value positionXY;
+    mrb_get_args(mrb, "A", &positionXY);
+    
+    mrb_float x = mrb_float(mrb_ary_ref(mrb, positionXY, 0));
+    mrb_float y = mrb_float(mrb_ary_ref(mrb, positionXY, 1));
+    
+    SKMRSprite *sprite = (__bridge SKMRSprite *)(mrb_data_get_ptr(mrb, mrb_cv_get(mrb, obj, mrb_intern_lit(mrb, "skmrNodeData")), &skmr_sprite_type));
+    sprite.position = CGPointMake(x, y);
+    
+    return mrb_nil_value();
+}
 
 @end
