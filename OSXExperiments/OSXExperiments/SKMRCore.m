@@ -103,11 +103,11 @@ static mrb_value set_current_scene(mrb_state* mrb, mrb_value obj)
 {
     struct RClass *skmrModule = mrb_define_module(mrb, "SKMR");
     
+    mrb_mod_cv_set(mrb, skmrModule, mrb_intern_lit(mrb, "skmrCoreData"), mrb_obj_value(Data_Wrap_Struct(mrb, mrb->object_class, &skmr_core_type, (void*) CFBridgingRetain(self))));
+    
     mrb_define_module_function(mrb, skmrModule, "show_debug=", set_show_debug, MRB_ARGS_REQ(1));
     mrb_define_module_function(mrb, skmrModule, "current_scene=", set_current_scene, MRB_ARGS_REQ(1));
     
-    mrb_mod_cv_set(mrb, skmrModule, mrb_intern_lit(mrb, "skmrCoreData"), mrb_obj_value(Data_Wrap_Struct(mrb, mrb->object_class, &skmr_core_type, (void*) CFBridgingRetain(self))));
-
     return skmrModule;
 }
 
