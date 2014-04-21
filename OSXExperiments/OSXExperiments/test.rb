@@ -8,14 +8,29 @@ begin
     main_scene.background_color = "#0033A0"
     
     label = SKMR::Label.new
+    label.text = "Good day!"
+    label.font_size = 64
+    label.font_color = "#990099"
+    label.position = [view_size[:x]/2, view_size[:y]/1.5]
+    main_scene << label
+    
+    label = SKMR::Label.new
     label.text = "Hello, World!"
     label.font_size = 64
     label.font_color = "#990099"
-    label.position = [view_size[:x]/2, view_size[:y]/2]
+    label.position = [view_size[:x]/2, view_size[:y]/3]
     main_scene << label
     
     sprite = SKMR::Sprite.new "simplesprite.png"
     sprite.position = [view_size[:x]/2, view_size[:y]/2]
+    main_scene << sprite
+    
+    sprite = SKMR::Sprite.new "simplesprite.png"
+    sprite.position = [view_size[:x]/4, view_size[:y]/2]
+    main_scene << sprite
+    
+    sprite = SKMR::Sprite.new "simplesprite.png"
+    sprite.position = [view_size[:x]/2, view_size[:y]/4]
     main_scene << sprite
     
     SKMR::current_scene = main_scene
