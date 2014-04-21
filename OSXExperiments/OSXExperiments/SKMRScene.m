@@ -20,7 +20,7 @@
 
 + (SKMRScene *)fetchStoredScene:(mrb_state *)mrb fromObject:(mrb_value)obj
 {
-    return (__bridge SKMRScene *)(mrb_data_get_ptr(mrb, mrb_cv_get(mrb, obj, mrb_intern_lit(mrb, "skmrSceneData")), &skmr_scene_type));
+    return (__bridge SKMRScene *)(mrb_data_get_ptr(mrb, mrb_iv_get(mrb, obj, mrb_intern_lit(mrb, "skmrSceneData")), &skmr_scene_type));
 }
 
 - (instancetype)initWithSize:(CGSize)size
@@ -62,7 +62,7 @@ static mrb_value set_background_color(mrb_state *mrb, mrb_value obj)
     const char *bgColor;
     mrb_get_args(mrb, "z", &bgColor);
     
-    SKMRScene *scene = (__bridge SKMRScene *)(mrb_data_get_ptr(mrb, mrb_cv_get(mrb, obj, mrb_intern_lit(mrb, "skmrSceneData")), &skmr_scene_type));
+    SKMRScene *scene = (__bridge SKMRScene *)(mrb_data_get_ptr(mrb, mrb_iv_get(mrb, obj, mrb_intern_lit(mrb, "skmrSceneData")), &skmr_scene_type));
     scene.backgroundColor = [SKMRUtils convertHexStringToSKColor:[NSString stringWithUTF8String:bgColor]];
     
     return obj;
@@ -75,7 +75,7 @@ static mrb_value add_node(mrb_state *mrb, mrb_value obj)
     
     mrb_get_args(mrb, "*", &argv, &len);
     
-    SKMRScene *scene = (__bridge SKMRScene *)(mrb_data_get_ptr(mrb, mrb_cv_get(mrb, obj, mrb_intern_lit(mrb, "skmrSceneData")), &skmr_scene_type));
+    SKMRScene *scene = (__bridge SKMRScene *)(mrb_data_get_ptr(mrb, mrb_iv_get(mrb, obj, mrb_intern_lit(mrb, "skmrSceneData")), &skmr_scene_type));
     
     while (len--)
     {

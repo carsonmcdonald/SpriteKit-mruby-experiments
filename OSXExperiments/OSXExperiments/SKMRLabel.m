@@ -22,7 +22,7 @@
 
 + (SKMRLabel *)fetchStoredLabel:(mrb_state *)mrb fromObject:(mrb_value)obj
 {
-    return (__bridge SKMRLabel *)(mrb_data_get_ptr(mrb, mrb_cv_get(mrb, obj, mrb_intern_lit(mrb, "skmrNodeData")), &skmr_label_type));
+    return (__bridge SKMRLabel *)(mrb_data_get_ptr(mrb, mrb_iv_get(mrb, obj, mrb_intern_lit(mrb, "skmrNodeData")), &skmr_label_type));
 }
 
 #pragma mark - Private
@@ -51,7 +51,7 @@ static mrb_value set_text(mrb_state *mrb, mrb_value obj)
     const char *bgColor;
     mrb_get_args(mrb, "z", &bgColor);
     
-    SKMRLabel *label = (__bridge SKMRLabel *)(mrb_data_get_ptr(mrb, mrb_cv_get(mrb, obj, mrb_intern_lit(mrb, "skmrNodeData")), &skmr_label_type));
+    SKMRLabel *label = (__bridge SKMRLabel *)(mrb_data_get_ptr(mrb, mrb_iv_get(mrb, obj, mrb_intern_lit(mrb, "skmrNodeData")), &skmr_label_type));
     label.text = [NSString stringWithUTF8String:bgColor];
     
     return mrb_nil_value();
@@ -62,7 +62,7 @@ static mrb_value set_font_color(mrb_state *mrb, mrb_value obj)
     const char *color;
     mrb_get_args(mrb, "z", &color);
     
-    SKMRLabel *label = (__bridge SKMRLabel *)(mrb_data_get_ptr(mrb, mrb_cv_get(mrb, obj, mrb_intern_lit(mrb, "skmrNodeData")), &skmr_label_type));
+    SKMRLabel *label = (__bridge SKMRLabel *)(mrb_data_get_ptr(mrb, mrb_iv_get(mrb, obj, mrb_intern_lit(mrb, "skmrNodeData")), &skmr_label_type));
     label.fontColor = [SKMRUtils convertHexStringToSKColor:[NSString stringWithUTF8String:color]];
     
     return mrb_nil_value();
@@ -73,7 +73,7 @@ static mrb_value set_font_size(mrb_state *mrb, mrb_value obj)
     mrb_int fontSize;
     mrb_get_args(mrb, "i", &fontSize);
     
-    SKMRLabel *label = (__bridge SKMRLabel *)(mrb_data_get_ptr(mrb, mrb_cv_get(mrb, obj, mrb_intern_lit(mrb, "skmrNodeData")), &skmr_label_type));
+    SKMRLabel *label = (__bridge SKMRLabel *)(mrb_data_get_ptr(mrb, mrb_iv_get(mrb, obj, mrb_intern_lit(mrb, "skmrNodeData")), &skmr_label_type));
     label.fontSize = fontSize;
     
     return mrb_nil_value();
@@ -87,7 +87,7 @@ static mrb_value set_position(mrb_state *mrb, mrb_value obj)
     mrb_float x = mrb_float(mrb_ary_ref(mrb, positionXY, 0));
     mrb_float y = mrb_float(mrb_ary_ref(mrb, positionXY, 1));
     
-    SKMRLabel *label = (__bridge SKMRLabel *)(mrb_data_get_ptr(mrb, mrb_cv_get(mrb, obj, mrb_intern_lit(mrb, "skmrNodeData")), &skmr_label_type));
+    SKMRLabel *label = (__bridge SKMRLabel *)(mrb_data_get_ptr(mrb, mrb_iv_get(mrb, obj, mrb_intern_lit(mrb, "skmrNodeData")), &skmr_label_type));
     label.position = CGPointMake(x, y);
     
     return mrb_nil_value();

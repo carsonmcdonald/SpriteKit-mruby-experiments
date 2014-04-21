@@ -17,7 +17,7 @@
 
 + (SKMRSprite *)fetchStoredSprite:(mrb_state *)mrb fromObject:(mrb_value)obj
 {
-    return (__bridge SKMRSprite *)(mrb_data_get_ptr(mrb, mrb_cv_get(mrb, obj, mrb_intern_lit(mrb, "skmrNodeData")), &skmr_sprite_type));
+    return (__bridge SKMRSprite *)(mrb_data_get_ptr(mrb, mrb_iv_get(mrb, obj, mrb_intern_lit(mrb, "skmrNodeData")), &skmr_sprite_type));
 }
 
 #pragma mark - Private
@@ -52,7 +52,7 @@ static mrb_value set_position(mrb_state *mrb, mrb_value obj)
     mrb_float x = mrb_float(mrb_ary_ref(mrb, positionXY, 0));
     mrb_float y = mrb_float(mrb_ary_ref(mrb, positionXY, 1));
     
-    SKMRSprite *sprite = (__bridge SKMRSprite *)(mrb_data_get_ptr(mrb, mrb_cv_get(mrb, obj, mrb_intern_lit(mrb, "skmrNodeData")), &skmr_sprite_type));
+    SKMRSprite *sprite = (__bridge SKMRSprite *)(mrb_data_get_ptr(mrb, mrb_iv_get(mrb, obj, mrb_intern_lit(mrb, "skmrNodeData")), &skmr_sprite_type));
     sprite.position = CGPointMake(x, y);
     
     return mrb_nil_value();
