@@ -8,6 +8,10 @@
 #import <MRuby/mruby/proc.h>
 
 @implementation SKMRScene
+{
+    mrb_state *currentMRB;
+    mrb_value onUpdateBlock;
+}
 
 + (void)registerModule:(mrb_state *)mrb withRootModule:(struct RClass *)skmrModule
 {
@@ -15,6 +19,7 @@
     
     mrb_define_method(mrb, skmrSceneClass, "initialize", skmr_scene_init, MRB_ARGS_REQ(2));
     mrb_define_method(mrb, skmrSceneClass, "background_color=", set_background_color, MRB_ARGS_REQ(1));
+    mrb_define_method(mrb, skmrSceneClass, "on_update", set_on_update, MRB_ARGS_BLOCK());
     mrb_define_method(mrb, skmrSceneClass, "<<", add_node, MRB_ARGS_REQ(1));
 }
 
@@ -28,8 +33,17 @@
     if (self = [super initWithSize:size])
     {
         self.scaleMode = SKSceneScaleModeAspectFit;
+        onUpdateBlock = mrb_nil_value();
     }
     return self;
+}
+
+- (void)update:(NSTimeInterval)currentTime
+{
+    if(!mrb_nil_p(onUpdateBlock))
+    {
+        mrb_yield(currentMRB, onUpdateBlock, mrb_fixnum_value(currentTime));
+    }
 }
 
 #pragma mark - Private
@@ -51,6 +65,7 @@ static mrb_value skmr_scene_init(mrb_state *mrb, mrb_value obj)
     mrb_get_args(mrb, "ii", &width, &height);
     
     SKMRScene *scene = [[SKMRScene alloc] initWithSize:CGSizeMake(width, height)];
+    scene->currentMRB = mrb;
     
     mrb_iv_set(mrb, obj, mrb_intern_lit(mrb, "skmrSceneData"), mrb_obj_value(Data_Wrap_Struct(mrb, mrb->object_class, &skmr_scene_type, (void*) CFBridgingRetain(scene))));
     
@@ -65,6 +80,17 @@ static mrb_value set_background_color(mrb_state *mrb, mrb_value obj)
     SKMRScene *scene = (__bridge SKMRScene *)(mrb_data_get_ptr(mrb, mrb_iv_get(mrb, obj, mrb_intern_lit(mrb, "skmrSceneData")), &skmr_scene_type));
     scene.backgroundColor = [SKMRUtils convertHexStringToSKColor:[NSString stringWithUTF8String:bgColor]];
     
+    return obj;
+}
+
+static mrb_value set_on_update(mrb_state *mrb, mrb_value obj)
+{
+    mrb_value onUpdateBlock;
+    mrb_get_args(mrb, "&", &onUpdateBlock);
+    
+    SKMRScene *scene = (__bridge SKMRScene *)(mrb_data_get_ptr(mrb, mrb_iv_get(mrb, obj, mrb_intern_lit(mrb, "skmrSceneData")), &skmr_scene_type));
+    scene->onUpdateBlock = onUpdateBlock;
+
     return obj;
 }
 

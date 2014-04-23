@@ -5,6 +5,18 @@ begin
     
     main_scene = SKMR::Scene.new(view_size[:x], view_size[:y])
     
+    last_time = 0
+    main_scene.on_update do |current_time|
+        begin
+        if current_time - 1 > last_time
+            last_time = current_time
+            puts "Update loop..."
+        end
+        rescue Exception => e
+            p e
+        end
+    end
+    
     main_scene.background_color = "#0033A0"
     
     label = SKMR::Label.new
@@ -35,5 +47,5 @@ begin
     
     SKMR::current_scene = main_scene
 rescue Exception => e
-    puts e
+    p e
 end
