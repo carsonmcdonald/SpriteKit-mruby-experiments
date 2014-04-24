@@ -35,6 +35,8 @@ begin
     
     sprite = SKMR::Sprite.new "simplesprite.png"
     sprite.position = [view_size[:x]/2, view_size[:y]/2]
+    sprite.color = "#880000"
+    sprite.color_blend_factor = 0.5
     main_scene << sprite
     
     sprite = SKMR::Sprite.new "simplesprite.png"
