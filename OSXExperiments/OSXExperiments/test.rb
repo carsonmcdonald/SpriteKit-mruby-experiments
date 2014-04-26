@@ -10,7 +10,7 @@ begin
         begin
         if current_time - 1 > last_time
             last_time = current_time
-            puts "Update loop..."
+            puts "Update loop: #{SKMR::Input.left_arrow_pressed}"
         end
         rescue Exception => e
             p e
