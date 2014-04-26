@@ -12,4 +12,9 @@
 + (instancetype)instance;
 + (void)registerModule:(mrb_state *)mrb withRootModule:(struct RClass *)skmrModule;
 
+- (void)triggerLeftArrowPress;
+- (void)triggerRightArrowPress;
+- (void)triggerUpArrowPress;
+- (void)triggerDownArrowPress;
+
 @end

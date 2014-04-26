@@ -5,6 +5,10 @@ begin
     
     main_scene = SKMR::Scene.new(view_size[:x], view_size[:y])
     
+    SKMR::Input.on_left_arrow_press do
+        puts "Left arrow press"
+    end
+    
     last_time = 0
     main_scene.on_update do |current_time|
         begin
