@@ -1,4 +1,5 @@
 #import "SKMRCore.h"
+#import "SKMRNode.h"
 #import "SKMRScene.h"
 #import "SKMRLabel.h"
 #import "SKMRSprite.h"
@@ -34,10 +35,13 @@
 
         struct RClass *skmrModule = [self registerRootModule];
         
+        [SKMRNode registerModule:mrb withRootModule:skmrModule];
         [SKMRScene registerModule:mrb withRootModule:skmrModule];
         [SKMRLabel registerModule:mrb withRootModule:skmrModule];
         [SKMRSprite registerModule:mrb withRootModule:skmrModule];
+        
         [SKMRInput registerModule:mrb withRootModule:skmrModule];
+        
         [SKMRAction registerModule:mrb withRootModule:skmrModule];
     }
     
