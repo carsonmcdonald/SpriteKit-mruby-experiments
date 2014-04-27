@@ -15,6 +15,7 @@
     
     mrb_define_method(mrb, skmrNodeClass, "position=", set_position, MRB_ARGS_REQ(1));
     mrb_define_method(mrb, skmrNodeClass, "action=", set_action, MRB_ARGS_REQ(1));
+    mrb_define_method(mrb, skmrNodeClass, "<<", add_node, MRB_ARGS_REQ(1));
 }
 
 + (SKNode *)fetchStoredNode:(mrb_state *)mrb fromObject:(mrb_value)obj
@@ -65,6 +66,24 @@ static mrb_value set_position(mrb_state *mrb, mrb_value obj)
     node.position = CGPointMake(x, y);
     
     return mrb_nil_value();
+}
+
+static mrb_value add_node(mrb_state *mrb, mrb_value obj)
+{
+    mrb_value *argv;
+    int len;
+    
+    mrb_get_args(mrb, "*", &argv, &len);
+    
+    SKNode *node = [SKMRNode fetchStoredNode:mrb fromObject:obj];
+    
+    while (len--)
+    {
+        mrb_value childNode = *argv++;
+        [node addChild:[SKMRNode fetchStoredNode:mrb fromObject:childNode]];
+    }
+    
+    return obj;
 }
 
 @end

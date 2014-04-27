@@ -19,11 +19,6 @@
     mrb_define_method(mrb, skmrSpriteClass, "color_blend_factor=", set_color_blend_factor, MRB_ARGS_REQ(1));
 }
 
-+ (SKMRSprite *)fetchStoredSprite:(mrb_state *)mrb fromObject:(mrb_value)obj
-{
-    return (SKMRSprite *)[SKMRNode fetchStoredNode:mrb fromObject:obj];
-}
-
 #pragma mark - Private
 
 static mrb_value skmr_sprite_init(mrb_state *mrb, mrb_value obj)

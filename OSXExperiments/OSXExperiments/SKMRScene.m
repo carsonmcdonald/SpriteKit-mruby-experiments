@@ -1,7 +1,6 @@
 #import "SKMRScene.h"
 #import "SKMRUtils.h"
-#import "SKMRLabel.h"
-#import "SKMRSprite.h"
+#import "SKMRNode.h"
 
 #import <MRuby/mruby/variable.h>
 #import <MRuby/mruby/data.h>
@@ -15,17 +14,16 @@
 
 + (void)registerModule:(mrb_state *)mrb withRootModule:(struct RClass *)skmrModule
 {
-    struct RClass* skmrSceneClass = mrb_define_class_under(mrb, skmrModule, "Scene", mrb->object_class);
+    struct RClass* skmrSceneClass = mrb_define_class_under(mrb, skmrModule, "Scene", mrb_class_get_under(mrb, skmrModule, "Node"));
     
     mrb_define_method(mrb, skmrSceneClass, "initialize", skmr_scene_init, MRB_ARGS_REQ(2));
     mrb_define_method(mrb, skmrSceneClass, "background_color=", set_background_color, MRB_ARGS_REQ(1));
     mrb_define_method(mrb, skmrSceneClass, "on_update", set_on_update, MRB_ARGS_BLOCK());
-    mrb_define_method(mrb, skmrSceneClass, "<<", add_node, MRB_ARGS_REQ(1));
 }
 
 + (SKMRScene *)fetchStoredScene:(mrb_state *)mrb fromObject:(mrb_value)obj
 {
-    return (__bridge SKMRScene *)(mrb_data_get_ptr(mrb, mrb_iv_get(mrb, obj, mrb_intern_lit(mrb, "skmrSceneData")), &skmr_scene_type));
+    return (SKMRScene *)[SKMRNode fetchStoredNode:mrb fromObject:obj];
 }
 
 - (instancetype)initWithSize:(CGSize)size
@@ -48,16 +46,6 @@
 
 #pragma mark - Private
 
-static void skmr_scene_free(mrb_state *mrb, void *obj)
-{
-    SKMRScene *skmrScene = (__bridge SKMRScene *)obj;
-    CFBridgingRelease((__bridge CFTypeRef)(skmrScene));
-}
-
-static const struct mrb_data_type skmr_scene_type = {
-    "skmrSceneData", skmr_scene_free,
-};
-
 static mrb_value skmr_scene_init(mrb_state *mrb, mrb_value obj)
 {
     mrb_int height = 0;
@@ -67,7 +55,7 @@ static mrb_value skmr_scene_init(mrb_state *mrb, mrb_value obj)
     SKMRScene *scene = [[SKMRScene alloc] initWithSize:CGSizeMake(width, height)];
     scene->currentMRB = mrb;
     
-    mrb_iv_set(mrb, obj, mrb_intern_lit(mrb, "skmrSceneData"), mrb_obj_value(Data_Wrap_Struct(mrb, mrb->object_class, &skmr_scene_type, (void*) CFBridgingRetain(scene))));
+    [SKMRNode setStoredNode:scene withMRB:mrb fromObject:obj];
     
     return obj;
 }
@@ -77,7 +65,7 @@ static mrb_value set_background_color(mrb_state *mrb, mrb_value obj)
     const char *bgColor;
     mrb_get_args(mrb, "z", &bgColor);
     
-    SKMRScene *scene = (__bridge SKMRScene *)(mrb_data_get_ptr(mrb, mrb_iv_get(mrb, obj, mrb_intern_lit(mrb, "skmrSceneData")), &skmr_scene_type));
+    SKMRScene *scene = (SKMRScene *)[SKMRNode fetchStoredNode:mrb fromObject:obj];
     scene.backgroundColor = [SKMRUtils convertHexStringToSKColor:[NSString stringWithUTF8String:bgColor]];
     
     return obj;
@@ -88,39 +76,9 @@ static mrb_value set_on_update(mrb_state *mrb, mrb_value obj)
     mrb_value onUpdateBlock;
     mrb_get_args(mrb, "&", &onUpdateBlock);
     
-    SKMRScene *scene = (__bridge SKMRScene *)(mrb_data_get_ptr(mrb, mrb_iv_get(mrb, obj, mrb_intern_lit(mrb, "skmrSceneData")), &skmr_scene_type));
+    SKMRScene *scene = (SKMRScene *)[SKMRNode fetchStoredNode:mrb fromObject:obj];
     scene->onUpdateBlock = onUpdateBlock;
 
-    return obj;
-}
-
-static mrb_value add_node(mrb_state *mrb, mrb_value obj)
-{
-    mrb_value *argv;
-    int len;
-    
-    mrb_get_args(mrb, "*", &argv, &len);
-    
-    SKMRScene *scene = (__bridge SKMRScene *)(mrb_data_get_ptr(mrb, mrb_iv_get(mrb, obj, mrb_intern_lit(mrb, "skmrSceneData")), &skmr_scene_type));
-    
-    while (len--)
-    {
-        mrb_value childNode = *argv++;
-        const char *className = mrb_obj_classname(mrb, childNode);
-        if(strcmp(className, "SKMR::Label") == 0)
-        {
-            [scene addChild:[SKMRLabel fetchStoredLabel:mrb fromObject:childNode]];
-        }
-        else if(strcmp(className, "SKMR::Sprite") == 0)
-        {
-            [scene addChild:[SKMRSprite fetchStoredSprite:mrb fromObject:childNode]];
-        }
-        else
-        {
-            mrb_raise(mrb, E_ARGUMENT_ERROR, [[NSString stringWithFormat:@"Unknown child node class: %s", className] UTF8String]);
-        }
-    }
-    
     return obj;
 }
 

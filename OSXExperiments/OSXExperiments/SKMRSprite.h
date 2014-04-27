@@ -5,6 +5,5 @@
 @interface SKMRSprite : SKSpriteNode
 
 + (void)registerModule:(mrb_state *)mrb withRootModule:(struct RClass *)skmrModule;
-+ (SKMRSprite *)fetchStoredSprite:(mrb_state *)mrb fromObject:(mrb_value)obj;
 
 @end
