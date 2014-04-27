@@ -1,6 +1,7 @@
 #import "SKMRSprite.h"
 
 #import "SKMRUtils.h"
+#import "SKMRAction.h"
 
 #import <MRuby/mruby/variable.h>
 #import <MRuby/mruby/data.h>
@@ -17,6 +18,7 @@
     mrb_define_method(mrb, skmrSpriteClass, "position=", set_position, MRB_ARGS_REQ(1));
     mrb_define_method(mrb, skmrSpriteClass, "color=", set_color, MRB_ARGS_REQ(1));
     mrb_define_method(mrb, skmrSpriteClass, "color_blend_factor=", set_color_blend_factor, MRB_ARGS_REQ(1));
+    mrb_define_method(mrb, skmrSpriteClass, "action=", set_action, MRB_ARGS_REQ(1));
 }
 
 + (SKMRSprite *)fetchStoredSprite:(mrb_state *)mrb fromObject:(mrb_value)obj
@@ -82,6 +84,20 @@ static mrb_value set_color_blend_factor(mrb_state *mrb, mrb_value obj)
     sprite.colorBlendFactor = cbf;
     
     return mrb_nil_value();
+}
+
+static mrb_value set_action(mrb_state *mrb, mrb_value obj)
+{
+    mrb_value mrbAction;
+    mrb_get_args(mrb, "o", &mrbAction);
+    
+    SKAction *action = [SKMRAction fetchStoredAction:mrb fromObject:mrbAction];
+    
+    SKMRSprite *sprite = (__bridge SKMRSprite *)(mrb_data_get_ptr(mrb, mrb_iv_get(mrb, obj, mrb_intern_lit(mrb, "skmrNodeData")), &skmr_sprite_type));
+    
+    [sprite runAction:action];
+    
+    return obj;
 }
 
 @end
