@@ -3,6 +3,7 @@
 #import "SKMRLabel.h"
 #import "SKMRSprite.h"
 #import "SKMRInput.h"
+#import "SKMRAction.h"
 
 #import <MRuby/MRuby.h>
 #import <MRuby/mruby/variable.h>
@@ -37,6 +38,7 @@
         [SKMRLabel registerModule:mrb withRootModule:skmrModule];
         [SKMRSprite registerModule:mrb withRootModule:skmrModule];
         [SKMRInput registerModule:mrb withRootModule:skmrModule];
+        [SKMRAction registerModule:mrb withRootModule:skmrModule];
     }
     
     return self;
