@@ -20,6 +20,7 @@
 		B69AF84018EF603B00DAE0B8 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69AF83F18EF603B00DAE0B8 /* SpriteKit.framework */; };
 		B69AF84218EF616300DAE0B8 /* MRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69AF84118EF616300DAE0B8 /* MRuby.framework */; };
 		B69AF84618F03BCB00DAE0B8 /* test.rb in Resources */ = {isa = PBXBuildFile; fileRef = B69AF84418F03BCB00DAE0B8 /* test.rb */; };
+		B6A7FABA190CA32500A65F73 /* SKMRAction.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A7FAB9190CA32500A65F73 /* SKMRAction.m */; };
 		B6ADFB0F1904404F0079A6FB /* SKMRSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = B6ADFB0E1904404F0079A6FB /* SKMRSprite.m */; };
 		B6ADFB13190448A70079A6FB /* simplesprite.png in Resources */ = {isa = PBXBuildFile; fileRef = B6ADFB12190448A70079A6FB /* simplesprite.png */; };
 		B6C10FE8190459C500006A24 /* SKMRWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C10FE7190459C500006A24 /* SKMRWindow.m */; };
@@ -51,6 +52,8 @@
 		B69AF83F18EF603B00DAE0B8 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		B69AF84118EF616300DAE0B8 /* MRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MRuby.framework; sourceTree = "<group>"; };
 		B69AF84418F03BCB00DAE0B8 /* test.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = test.rb; sourceTree = "<group>"; };
+		B6A7FAB8190CA32500A65F73 /* SKMRAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKMRAction.h; sourceTree = "<group>"; };
+		B6A7FAB9190CA32500A65F73 /* SKMRAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKMRAction.m; sourceTree = "<group>"; };
 		B6ADFB0D1904404F0079A6FB /* SKMRSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKMRSprite.h; sourceTree = "<group>"; };
 		B6ADFB0E1904404F0079A6FB /* SKMRSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKMRSprite.m; sourceTree = "<group>"; };
 		B6ADFB12190448A70079A6FB /* simplesprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = simplesprite.png; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 				B618AE9518F1BB7500A8D114 /* SKMRLabel.m */,
 				B6ADFB0D1904404F0079A6FB /* SKMRSprite.h */,
 				B6ADFB0E1904404F0079A6FB /* SKMRSprite.m */,
+				B6A7FAB8190CA32500A65F73 /* SKMRAction.h */,
+				B6A7FAB9190CA32500A65F73 /* SKMRAction.m */,
 				B667D6C018EF5DE80062E25A /* AppDelegate.h */,
 				B667D6C118EF5DE80062E25A /* AppDelegate.m */,
 				B6ADFB12190448A70079A6FB /* simplesprite.png */,
@@ -226,6 +231,7 @@
 				B6C10FE8190459C500006A24 /* SKMRWindow.m in Sources */,
 				B6ADFB0F1904404F0079A6FB /* SKMRSprite.m in Sources */,
 				B667D6BB18EF5DE80062E25A /* main.m in Sources */,
+				B6A7FABA190CA32500A65F73 /* SKMRAction.m in Sources */,
 				B6915DB818F09FE600CB3EED /* SKMRCore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
