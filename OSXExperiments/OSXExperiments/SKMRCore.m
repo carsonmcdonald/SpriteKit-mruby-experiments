@@ -2,6 +2,7 @@
 #import "SKMRNode.h"
 #import "SKMRScene.h"
 #import "SKMRLabel.h"
+#import "SKMRTexture.h"
 #import "SKMRSprite.h"
 #import "SKMRInput.h"
 #import "SKMRAction.h"
@@ -34,6 +35,8 @@
         mrb = mrb_open();
 
         struct RClass *skmrModule = [self registerRootModule];
+        
+        [SKMRTexture registerModule:mrb withRootModule:skmrModule];
         
         [SKMRNode registerModule:mrb withRootModule:skmrModule];
         [SKMRScene registerModule:mrb withRootModule:skmrModule];
