@@ -16,6 +16,7 @@
     mrb_define_method(mrb, skmrNodeClass, "position=", set_position, MRB_ARGS_REQ(1));
     mrb_define_method(mrb, skmrNodeClass, "action=", set_action, MRB_ARGS_REQ(1));
     mrb_define_method(mrb, skmrNodeClass, "<<", add_node, MRB_ARGS_REQ(1));
+    mrb_define_method(mrb, skmrNodeClass, "remove_all_nodes", remove_all_nodes, MRB_ARGS_NONE());
 }
 
 + (SKNode *)fetchStoredNode:(mrb_state *)mrb fromObject:(mrb_value)obj
@@ -82,6 +83,15 @@ static mrb_value add_node(mrb_state *mrb, mrb_value obj)
         mrb_value childNode = *argv++;
         [node addChild:[SKMRNode fetchStoredNode:mrb fromObject:childNode]];
     }
+    
+    return obj;
+}
+
+static mrb_value remove_all_nodes(mrb_state *mrb, mrb_value obj)
+{
+    SKNode *node = [SKMRNode fetchStoredNode:mrb fromObject:obj];
+    
+    [node removeAllChildren];
     
     return obj;
 }
