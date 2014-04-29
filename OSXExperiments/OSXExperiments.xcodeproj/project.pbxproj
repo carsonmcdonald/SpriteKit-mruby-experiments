@@ -22,6 +22,10 @@
 		B69AF84618F03BCB00DAE0B8 /* test.rb in Resources */ = {isa = PBXBuildFile; fileRef = B69AF84418F03BCB00DAE0B8 /* test.rb */; };
 		B6A7FABA190CA32500A65F73 /* SKMRAction.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A7FAB9190CA32500A65F73 /* SKMRAction.m */; };
 		B6A7FABD190D36EA00A65F73 /* SKMRNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A7FABC190D36EA00A65F73 /* SKMRNode.m */; };
+		B6A7FACD190D976000A65F73 /* example-animation.rb in Resources */ = {isa = PBXBuildFile; fileRef = B6A7FACA190D976000A65F73 /* example-animation.rb */; };
+		B6A7FACE190D976000A65F73 /* dog1-state2.png in Resources */ = {isa = PBXBuildFile; fileRef = B6A7FACB190D976000A65F73 /* dog1-state2.png */; };
+		B6A7FACF190D976000A65F73 /* dog1-state1.png in Resources */ = {isa = PBXBuildFile; fileRef = B6A7FACC190D976000A65F73 /* dog1-state1.png */; };
+		B6A7FAD5190DEFB600A65F73 /* SKMRTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A7FAD4190DEFB600A65F73 /* SKMRTexture.m */; };
 		B6ADFB0F1904404F0079A6FB /* SKMRSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = B6ADFB0E1904404F0079A6FB /* SKMRSprite.m */; };
 		B6ADFB13190448A70079A6FB /* simplesprite.png in Resources */ = {isa = PBXBuildFile; fileRef = B6ADFB12190448A70079A6FB /* simplesprite.png */; };
 		B6C10FE8190459C500006A24 /* SKMRWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C10FE7190459C500006A24 /* SKMRWindow.m */; };
@@ -57,6 +61,11 @@
 		B6A7FAB9190CA32500A65F73 /* SKMRAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKMRAction.m; sourceTree = "<group>"; };
 		B6A7FABB190D36EA00A65F73 /* SKMRNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKMRNode.h; sourceTree = "<group>"; };
 		B6A7FABC190D36EA00A65F73 /* SKMRNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKMRNode.m; sourceTree = "<group>"; };
+		B6A7FACA190D976000A65F73 /* example-animation.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = "example-animation.rb"; sourceTree = "<group>"; };
+		B6A7FACB190D976000A65F73 /* dog1-state2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dog1-state2.png"; sourceTree = "<group>"; };
+		B6A7FACC190D976000A65F73 /* dog1-state1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dog1-state1.png"; sourceTree = "<group>"; };
+		B6A7FAD3190DEFB600A65F73 /* SKMRTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKMRTexture.h; sourceTree = "<group>"; };
+		B6A7FAD4190DEFB600A65F73 /* SKMRTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKMRTexture.m; sourceTree = "<group>"; };
 		B6ADFB0D1904404F0079A6FB /* SKMRSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKMRSprite.h; sourceTree = "<group>"; };
 		B6ADFB0E1904404F0079A6FB /* SKMRSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKMRSprite.m; sourceTree = "<group>"; };
 		B6ADFB12190448A70079A6FB /* simplesprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = simplesprite.png; sourceTree = "<group>"; };
@@ -122,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				B69AF84418F03BCB00DAE0B8 /* test.rb */,
+				B6A7FACA190D976000A65F73 /* example-animation.rb */,
 				B618AE9718F1BFB600A8D114 /* SKMRUtils.h */,
 				B618AE9818F1BFB600A8D114 /* SKMRUtils.m */,
 				B6C10FE6190459C500006A24 /* SKMRWindow.h */,
@@ -138,11 +148,15 @@
 				B618AE9518F1BB7500A8D114 /* SKMRLabel.m */,
 				B6ADFB0D1904404F0079A6FB /* SKMRSprite.h */,
 				B6ADFB0E1904404F0079A6FB /* SKMRSprite.m */,
+				B6A7FAD3190DEFB600A65F73 /* SKMRTexture.h */,
+				B6A7FAD4190DEFB600A65F73 /* SKMRTexture.m */,
 				B6A7FAB8190CA32500A65F73 /* SKMRAction.h */,
 				B6A7FAB9190CA32500A65F73 /* SKMRAction.m */,
 				B667D6C018EF5DE80062E25A /* AppDelegate.h */,
 				B667D6C118EF5DE80062E25A /* AppDelegate.m */,
 				B6ADFB12190448A70079A6FB /* simplesprite.png */,
+				B6A7FACB190D976000A65F73 /* dog1-state2.png */,
+				B6A7FACC190D976000A65F73 /* dog1-state1.png */,
 				B667D6C318EF5DE80062E25A /* MainMenu.xib */,
 				B667D6C618EF5DE80062E25A /* Images.xcassets */,
 				B667D6B518EF5DE80062E25A /* Supporting Files */,
@@ -216,6 +230,9 @@
 				B6ADFB13190448A70079A6FB /* simplesprite.png in Resources */,
 				B667D6B918EF5DE80062E25A /* InfoPlist.strings in Resources */,
 				B69AF84618F03BCB00DAE0B8 /* test.rb in Resources */,
+				B6A7FACD190D976000A65F73 /* example-animation.rb in Resources */,
+				B6A7FACF190D976000A65F73 /* dog1-state1.png in Resources */,
+				B6A7FACE190D976000A65F73 /* dog1-state2.png in Resources */,
 				B667D6C718EF5DE80062E25A /* Images.xcassets in Resources */,
 				B667D6C518EF5DE80062E25A /* MainMenu.xib in Resources */,
 			);
@@ -234,6 +251,7 @@
 				B618AE9318F1AB2500A8D114 /* SKMRScene.m in Sources */,
 				B618AE9618F1BB7500A8D114 /* SKMRLabel.m in Sources */,
 				B6C10FE8190459C500006A24 /* SKMRWindow.m in Sources */,
+				B6A7FAD5190DEFB600A65F73 /* SKMRTexture.m in Sources */,
 				B6ADFB0F1904404F0079A6FB /* SKMRSprite.m in Sources */,
 				B667D6BB18EF5DE80062E25A /* main.m in Sources */,
 				B6A7FABD190D36EA00A65F73 /* SKMRNode.m in Sources */,
