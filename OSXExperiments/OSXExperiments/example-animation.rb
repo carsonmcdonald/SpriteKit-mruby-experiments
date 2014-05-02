@@ -19,9 +19,9 @@ begin
         puts "Left arrow press"
         
         begin
-            dog_sprite.action = SKMR::Action.create_repeat(SKMR::Action.create_texture_animation(dog_textures, 0.1), 5)
-            
-            #dog_sprite.action = SKMR::Action.create_move_by(-10, 0, 0.2)
+            walk_animation = [SKMR::Action.create_texture_animation(dog_textures, 0.15), SKMR::Action.create_move_by(-5, 0, 0.2)]
+
+            dog_sprite.action = SKMR::Action.create_repeat(SKMR::Action.create_group(walk_animation), 5)
         rescue Exception => e
             p e
         end
@@ -30,7 +30,9 @@ begin
     SKMR::Input.on_right_arrow_press do
         puts "Right arrow press"
         
-        dog_sprite.action = SKMR::Action.create_move_by(10, 0, 0.2)
+        walk_animation = [SKMR::Action.create_texture_animation(dog_textures, 0.15), SKMR::Action.create_move_by(5, 0, 0.2)]
+        
+        dog_sprite.action = SKMR::Action.create_repeat(SKMR::Action.create_group(walk_animation), 5)
     end
     
     SKMR::current_scene = main_scene

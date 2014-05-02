@@ -17,6 +17,7 @@
     mrb_define_class_method(mrb, skmrActionClass, "create_texture_animation", create_texture_animation, MRB_ARGS_REQ(2));
     mrb_define_class_method(mrb, skmrActionClass, "create_repeat", create_repeat, MRB_ARGS_REQ(2));
     mrb_define_class_method(mrb, skmrActionClass, "create_repeat_forever", create_repeat_forever, MRB_ARGS_REQ(1));
+    mrb_define_class_method(mrb, skmrActionClass, "create_group", create_group, MRB_ARGS_REQ(1));
 }
 
 + (SKAction *)fetchStoredAction:(mrb_state *)mrb fromObject:(mrb_value)obj
@@ -97,6 +98,29 @@ static mrb_value create_repeat_forever(mrb_state *mrb, mrb_value obj)
     mrb_value mrbAction = mrb_class_new_instance(mrb, 0, NULL, mrb_obj_class(mrb, obj));
     
     SKAction *action = [SKAction repeatActionForever:[SKMRAction fetchStoredAction:mrb fromObject:actionToRepeat]];
+    
+    mrb_iv_set(mrb, mrbAction, mrb_intern_lit(mrb, "skmrNodeData"), mrb_obj_value(Data_Wrap_Struct(mrb, mrb->object_class, &skmr_action_type, (void*) CFBridgingRetain(action))));
+    
+    return mrbAction;
+}
+
+static mrb_value create_group(mrb_state *mrb, mrb_value obj)
+{
+    mrb_value animations;
+    mrb_get_args(mrb, "A", &animations);
+    
+    mrb_int animationCount = mrb_ary_len(mrb, animations);
+    
+    NSMutableArray *animationGroup = [[NSMutableArray alloc] initWithCapacity:animationCount];
+    for(int i=0; i<animationCount; i++)
+    {
+        mrb_value animation = mrb_ary_ref(mrb, animations, i);
+        [animationGroup addObject:[SKMRAction fetchStoredAction:mrb fromObject:animation]];
+    }
+    
+    mrb_value mrbAction = mrb_class_new_instance(mrb, 0, NULL, mrb_obj_class(mrb, obj));
+    
+    SKAction *action = [SKAction group:animationGroup];
     
     mrb_iv_set(mrb, mrbAction, mrb_intern_lit(mrb, "skmrNodeData"), mrb_obj_value(Data_Wrap_Struct(mrb, mrb->object_class, &skmr_action_type, (void*) CFBridgingRetain(action))));
     
