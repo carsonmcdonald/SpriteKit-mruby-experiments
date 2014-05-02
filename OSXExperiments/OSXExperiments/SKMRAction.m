@@ -15,6 +15,7 @@
     
     mrb_define_class_method(mrb, skmrActionClass, "create_move_by", create_move_by, MRB_ARGS_REQ(2));
     mrb_define_class_method(mrb, skmrActionClass, "create_texture_animation", create_texture_animation, MRB_ARGS_REQ(2));
+    mrb_define_class_method(mrb, skmrActionClass, "create_repeat", create_repeat, MRB_ARGS_REQ(2));
 }
 
 + (SKAction *)fetchStoredAction:(mrb_state *)mrb fromObject:(mrb_value)obj
@@ -66,6 +67,21 @@ static mrb_value create_texture_animation(mrb_state *mrb, mrb_value obj)
     mrb_value mrbAction = mrb_class_new_instance(mrb, 0, NULL, mrb_obj_class(mrb, obj));
 
     SKAction *action = [SKAction animateWithTextures:textureArr timePerFrame:duration];
+    
+    mrb_iv_set(mrb, mrbAction, mrb_intern_lit(mrb, "skmrNodeData"), mrb_obj_value(Data_Wrap_Struct(mrb, mrb->object_class, &skmr_action_type, (void*) CFBridgingRetain(action))));
+    
+    return mrbAction;
+}
+
+static mrb_value create_repeat(mrb_state *mrb, mrb_value obj)
+{
+    mrb_value actionToRepeat;
+    mrb_int count;
+    mrb_get_args(mrb, "oi", &actionToRepeat, &count);
+    
+    mrb_value mrbAction = mrb_class_new_instance(mrb, 0, NULL, mrb_obj_class(mrb, obj));
+    
+    SKAction *action = [SKAction repeatAction:[SKMRAction fetchStoredAction:mrb fromObject:actionToRepeat] count:count];
     
     mrb_iv_set(mrb, mrbAction, mrb_intern_lit(mrb, "skmrNodeData"), mrb_obj_value(Data_Wrap_Struct(mrb, mrb->object_class, &skmr_action_type, (void*) CFBridgingRetain(action))));
     

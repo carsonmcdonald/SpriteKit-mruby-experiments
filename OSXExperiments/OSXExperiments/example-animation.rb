@@ -18,9 +18,13 @@ begin
     SKMR::Input.on_left_arrow_press do
         puts "Left arrow press"
         
-        dog_sprite.action = SKMR::Action.create_texture_animation(dog_textures, 0.1)
-        
-        #dog_sprite.action = SKMR::Action.create_move_by(-10, 0, 0.2)
+        begin
+            dog_sprite.action = SKMR::Action.create_repeat(SKMR::Action.create_texture_animation(dog_textures, 0.1), 5)
+            
+            #dog_sprite.action = SKMR::Action.create_move_by(-10, 0, 0.2)
+        rescue Exception => e
+            p e
+        end
     end
     
     SKMR::Input.on_right_arrow_press do
