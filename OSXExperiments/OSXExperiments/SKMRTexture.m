@@ -32,7 +32,7 @@ static const struct mrb_data_type skmr_texture_type = {
 
 static mrb_value skmr_texture_init(mrb_state *mrb, mrb_value obj)
 {
-    const char *imageName;
+    const char *imageName = NULL;
     mrb_get_args(mrb, "z", &imageName);
     
     SKTexture *texture = [SKTexture textureWithImageNamed:[NSString stringWithUTF8String:imageName]];

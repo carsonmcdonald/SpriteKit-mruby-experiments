@@ -23,7 +23,7 @@
 
 static mrb_value skmr_sprite_init(mrb_state *mrb, mrb_value obj)
 {
-    const char *imageName;
+    const char *imageName = NULL;
     mrb_get_args(mrb, "z", &imageName);
     
     SKMRSprite *sprite = [[SKMRSprite alloc] initWithImageNamed:[NSString stringWithUTF8String:imageName]];
@@ -35,7 +35,7 @@ static mrb_value skmr_sprite_init(mrb_state *mrb, mrb_value obj)
 
 static mrb_value set_color(mrb_state *mrb, mrb_value obj)
 {
-    const char *color;
+    const char *color = NULL;
     mrb_get_args(mrb, "z", &color);
     
     SKSpriteNode *sprite = (SKSpriteNode *)[SKMRNode fetchStoredNode:mrb fromObject:obj];

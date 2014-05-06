@@ -33,7 +33,7 @@ static mrb_value skmr_label_init(mrb_state *mrb, mrb_value obj)
 
 static mrb_value set_text(mrb_state *mrb, mrb_value obj)
 {
-    const char *bgColor;
+    const char *bgColor = NULL;
     mrb_get_args(mrb, "z", &bgColor);
     
     SKLabelNode *label = (SKLabelNode *)[SKMRNode fetchStoredNode:mrb fromObject:obj];
@@ -44,7 +44,7 @@ static mrb_value set_text(mrb_state *mrb, mrb_value obj)
 
 static mrb_value set_font_color(mrb_state *mrb, mrb_value obj)
 {
-    const char *color;
+    const char *color = NULL;
     mrb_get_args(mrb, "z", &color);
     
     SKLabelNode *label = (SKLabelNode *)[SKMRNode fetchStoredNode:mrb fromObject:obj];

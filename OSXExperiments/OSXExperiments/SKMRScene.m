@@ -62,7 +62,7 @@ static mrb_value skmr_scene_init(mrb_state *mrb, mrb_value obj)
 
 static mrb_value set_background_color(mrb_state *mrb, mrb_value obj)
 {
-    const char *bgColor;
+    const char *bgColor = NULL;
     mrb_get_args(mrb, "z", &bgColor);
     
     SKMRScene *scene = (SKMRScene *)[SKMRNode fetchStoredNode:mrb fromObject:obj];
