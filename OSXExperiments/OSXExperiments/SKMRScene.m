@@ -18,6 +18,7 @@
     
     mrb_define_method(mrb, skmrSceneClass, "initialize", skmr_scene_init, MRB_ARGS_REQ(2));
     mrb_define_method(mrb, skmrSceneClass, "background_color=", set_background_color, MRB_ARGS_REQ(1));
+    mrb_define_method(mrb, skmrSceneClass, "filter_with_name=", set_filter_with_name, MRB_ARGS_REQ(1));
     mrb_define_method(mrb, skmrSceneClass, "on_update", set_on_update, MRB_ARGS_BLOCK());
 }
 
@@ -78,6 +79,26 @@ static mrb_value set_on_update(mrb_state *mrb, mrb_value obj)
     
     SKMRScene *scene = (SKMRScene *)[SKMRNode fetchStoredNode:mrb fromObject:obj];
     scene->onUpdateBlock = onUpdateBlock;
+
+    return obj;
+}
+
+static mrb_value set_filter_with_name(mrb_state *mrb, mrb_value obj)
+{
+    const char *filterName = NULL;
+    mrb_get_args(mrb, "z", &filterName);
+    
+    SKMRScene *scene = (SKMRScene *)[SKMRNode fetchStoredNode:mrb fromObject:obj];
+    if(filterName == NULL)
+    {
+        scene.filter = nil;
+    }
+    else
+    {
+        scene.filter = [CIFilter filterWithName:[NSString stringWithUTF8String:filterName]];
+        [scene.filter setDefaults];
+    }
+    scene.shouldEnableEffects = scene.filter != nil;
 
     return obj;
 }

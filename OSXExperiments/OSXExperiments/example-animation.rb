@@ -4,6 +4,7 @@ begin
     view_size = {:x=>800, :y=>600}
     
     main_scene = SKMR::Scene.new(view_size[:x], view_size[:y])
+    #main_scene.filter_with_name = "CIBloom"
     
     main_scene.background_color = "#0033A0"
     
